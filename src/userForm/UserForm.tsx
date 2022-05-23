@@ -2,6 +2,7 @@ import { Button, Grid, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import { initialValues } from "../data/InitialValues";
 import { IUserFormInitialValues } from "../interfaces/UserForm";
+import { validationSchema } from "../validations/ValidationSchema";
 
 const UserForm = () => {
   const onSubmit = (values: IUserFormInitialValues) => {
@@ -12,7 +13,7 @@ const UserForm = () => {
     enableReinitialize: true,
     initialValues: initialValues,
     onSubmit,
-    // validationSchema: validationSchema,
+    validationSchema: validationSchema,
   });
 
   return (
@@ -54,7 +55,7 @@ const UserForm = () => {
             id="email"
             name="email"
             variant="outlined"
-            type={"text"}
+            type={"email"}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.email}
@@ -66,7 +67,7 @@ const UserForm = () => {
             id="address"
             name="address"
             variant="outlined"
-            type={"email"}
+            type={"text"}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.address}
